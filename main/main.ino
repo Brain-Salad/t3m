@@ -23,6 +23,10 @@ void setup() {
 }
 
 void loop() {
+
+}
+
+void fullRangeMove() {
   for (int i = 2400; i >= 500; i-= 200)
   {
     moveAll(i);
