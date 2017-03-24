@@ -75,6 +75,15 @@ void moveJoint3(int i) {
   l6j3.move(i, speed);
 }
 
+void moveAllMotorsJ1(int i) {
+  l1j1.move(i, speed);
+  l2j1.move(i, speed);
+  l3j1.move(i, speed);
+  l4j1.move(i, speed);
+  l5j1.move(i, speed);
+  l6j1.move(i, speed);
+}
+
 void moveAll(int i) {
   moveJoint1(i);
   moveJoint2(i);
@@ -115,44 +124,57 @@ void moveStanding() {
   moveJoint2(DOWN);
 }
 void step() {
-  moveStanding();
-  delay(speed);
-  l1j2.move(UP, speed);
-  l3j2.move(UP, speed);
-  l5j2.move(UP, speed);
+  // moveStanding();
+  // delay(speed);
+  moveAllMotorsJ1(2500);
+  moveJoint2(1500);
+  moveJoint3(2000);
   delay(LONG_DELAY);
-  l1j1.move(2000, speed);
-  l3j1.move(2000, speed);
-  l5j1.move(1000, speed);
+  // l1j1.move(MID, speed);
+  // l2j1.move(MID, speed);
+  // l3j1.move(MID, speed);
+  // l4j1.move(MID, speed);
+  // l5j1.move(MID, speed);
+  // l6j1.move(MID, speed);
+  moveAllMotorsJ1(MID);
+  moveJoint2(DOWN);
+  moveJoint3(1500);
   delay(LONG_DELAY);
-  l1j2.move(DOWN, speed);
-  l3j2.move(DOWN, speed);
-  l5j2.move(DOWN, speed);
+  // l1j1.move(500, speed);
+  // l2j1.move(500, speed);
+  // l3j1.move(500, speed);
+  // l4j1.move(500, speed);
+  // l5j1.move(500, speed);
+  // l6j1.move(500, speed);
+  moveAllMotorsJ1(500);
+  moveJoint2(1500);
+  moveJoint3(2000);
   delay(LONG_DELAY);
-  l2j2.move(UP, speed);
-  l4j2.move(UP, speed);
-  l6j2.move(UP, speed);
+  // l1j1.move(MID, speed);
+  // l2j1.move(MID, speed);
+  // l3j1.move(MID, speed);
+  // l4j1.move(MID, speed);
+  // l5j1.move(MID, speed);
+  // l6j1.move(MID, speed);
+  moveAllMotorsJ1(MID);
+  moveJoint2(DOWN);
+  moveJoint3(1500);
   delay(LONG_DELAY);
-  l1j1.move(MID, speed);
-  l3j1.move(MID, speed);
-  l5j1.move(MID, speed);
-  delay(LONG_DELAY);
-  l2j2.move(DOWN, speed);
-  l4j2.move(DOWN, speed);
-  l6j2.move(DOWN, speed);
-  delay(LONG_DELAY);
-
+// delay(5000);
 }
 
 void setup() {
   Serial.begin(9600);
   pinMode (A0, INPUT);
   Serial.println("Starting in 5 seconds");
+  moveStanding();
   delay(5000);
 }
 
 void loop() {
   // fullRangeMove();
   // readAndMove();
+
   step();
+  // moveStanding();
 }
